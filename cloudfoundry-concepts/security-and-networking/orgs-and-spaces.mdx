@@ -1,40 +1,41 @@
 ---
 title: Planning orgs and spaces in Cloud Foundry
 owner: CAPI
+sidebar_position: 5
 ---
 
 
-<%# Reset page title based on product title %>
-<% if vars.platform_code != 'CF' %>
+< Reset page title based on product title >
+< if vars.platform_code != 'CF' >
 
-<% set_title("Planning", vars.app_runtime_abbr, "orgs and spaces") %>
+< set_title("Planning", vars.app_runtime_abbr, "orgs and spaces") >
 
-<% end %>
+< end >
 
 
 This topic tells you about the considerations for effectively planning foundations, orgs, and spaces. You can plan your orgs and spaces to make the best use of the
-authorization features in <%= vars.app_runtime_first %>.
+authorization features in <AppRuntimeFirst/>.
 
-An installation of <%= vars.app_runtime_abbr %> is referred to as a _foundation_.
+An installation of <AppRuntimeAbbr/> is referred to as a _foundation_.
 Each foundation has _orgs_ and _spaces_. For more information, see [Orgs, Spaces, Roles, and Permissions](./roles.html).
 
-The <%= vars.app_runtime_abbr %> roles described in _Orgs, Spaces, Roles, and Permissions_ use the principle of least privilege. Each role exists for a purpose and features in <%= vars.app_runtime_abbr %> enable these purposes.
+The <AppRuntimeAbbr/> roles described in _Orgs, Spaces, Roles, and Permissions_ use the principle of least privilege. Each role exists for a purpose and features in <AppRuntimeAbbr/> enable these purposes.
 
-Consider these roles when planning your foundations, orgs, and spaces. This allows for full use of the features and assumptions of <%= vars.app_runtime_abbr %>.
+Consider these roles when planning your foundations, orgs, and spaces. This allows for full use of the features and assumptions of <AppRuntimeAbbr/>.
 
 
-## <a id="conceptual"></a> How <%= vars.app_runtime_abbr %> layers relate to your company
+## <a id="conceptual"></a> How <AppRuntimeAbbr/> layers relate to your company
 
-The following sections describe what <%= vars.app_runtime_abbr %> layers are and how they relate to your company structure.
+The following sections describe what <AppRuntimeAbbr/> layers are and how they relate to your company structure.
 
-### <a id="layers"></a> Overview of <%= vars.app_runtime_abbr %> layers
+### <a id="layers"></a> Overview of <AppRuntimeAbbr/> layers
 
-For an overview of each of the structural <%= vars.app_runtime_abbr %> layers, see the following table:
+For an overview of each of the structural <AppRuntimeAbbr/> layers, see the following table:
 
 <table>
 <thead>
 	<tr>
-		<th><%= vars.app_runtime_abbr %> Layer</th>
+		<th><AppRuntimeAbbr/> Layer</th>
 		<th>Challenge to Maintain</th>
 		<th>Contains</th>
 		<th>Description</th>
@@ -70,22 +71,22 @@ For an overview of each of the structural <%= vars.app_runtime_abbr %> layers, s
 
 Foundations roughly map to a company and environments. For an illustration, see the following diagram:
 
-![Foundations roughly map to a company and to an environment](./images/mapping_foundations.png)
+![Foundations roughly map to a company and to an environment](../../static/images/mapping_foundations.png)
 
 ### <a id="mappingorgs"></a> Orgs
 
 Orgs often map to a business unit in a particular foundation. To understand how you can map your company
-structure to a <%= vars.app_runtime_abbr %> org, see the following diagram:
+structure to a <AppRuntimeAbbr/> org, see the following diagram:
 
-![Orgs can encompass Business Units, environments, teams, or products](./images/mapping_organizations.png)
+![Orgs can encompass Business Units, environments, teams, or products](../../static/images/mapping_organizations.png)
 
 
 ### <a id="mappingspaces"></a> Spaces
 
 
-Spaces can encompass teams, products, and specific deployables. To understand how you can map your company structure to a <%= vars.app_runtime_abbr %> space, see the following diagram:
+Spaces can encompass teams, products, and specific deployables. To understand how you can map your company structure to a <AppRuntimeAbbr/> space, see the following diagram:
 
-![Spaces can encompass Teams, Products and specific deployables](./images/mapping_spaces.png)
+![Spaces can encompass Teams, Products and specific deployables](../../static/images/mapping_spaces.png)
 
 
 ## <a id="mappingconsiderations"></a> Mapping considerations
@@ -95,18 +96,18 @@ The following sections describe considerations you can make when mapping foundat
 
 ### <a id="environments"></a> Planning for your environment
 
-To effectively plan your environments, you must decide at what <%= vars.app_runtime_abbr %> layer they belong.
+To effectively plan your environments, you must decide at what <AppRuntimeAbbr/> layer they belong.
 
 Broad environments, such as production environments, are commonly mapped to a foundation. More specific environments are mapped to an org or space.
 
 Because of the large human cost to maintaining a foundation, you might see foundations mapped to production and staging environments separately.
 
-For examples of environments and how they map to <%= vars.app_runtime_abbr %> layers, see the following table:
+For examples of environments and how they map to <AppRuntimeAbbr/> layers, see the following table:
 
 <table>
 <thead>
 	<tr>
-		<th><%= vars.app_runtime_abbr %> Layer</th>
+		<th><AppRuntimeAbbr/> Layer</th>
 		<th>Examples of Environments</th>
 	</tr>
 </thead>
@@ -122,14 +123,14 @@ For examples of environments and how they map to <%= vars.app_runtime_abbr %> la
 </tbody>
 </table>
 
-### <a id="considerations"></a> Questions to consider about each <%= vars.app_runtime_abbr %> layer
+### <a id="considerations"></a> Questions to consider about each <AppRuntimeAbbr/> layer
 
-For guiding questions to help you make decisions about planning your <%= vars.app_runtime_abbr %> structure, see the following table:
+For guiding questions to help you make decisions about planning your <AppRuntimeAbbr/> structure, see the following table:
 
 <table>
 <thead>
 	<tr>
-		<th><%= vars.app_runtime_abbr %> Layer</th>
+		<th><AppRuntimeAbbr/> Layer</th>
 		<th>Questions to Consider</th>
 	</tr>
 </thead>
@@ -172,13 +173,13 @@ For guiding questions to help you make decisions about planning your <%= vars.ap
 
 ### <a id="impact"></a> Mapping larger and smaller subsets
 
-_Subsets_ are the company divisions you decide to map to <%= vars.app_runtime_abbr %>. When creating your subsets, consider that the lower the <%= vars.app_runtime_abbr %> layer, the more specific you want to map your subsets. Conversely, the higher the <%= vars.app_runtime_abbr %> layer, the broader you want to make your subsets.
+_Subsets_ are the company divisions you decide to map to <AppRuntimeAbbr/>. When creating your subsets, consider that the lower the <AppRuntimeAbbr/> layer, the more specific you want to map your subsets. Conversely, the higher the <AppRuntimeAbbr/> layer, the broader you want to make your subsets.
 
-For more information about mapping larger subsets for each <%= vars.app_runtime_abbr %> layer, see the following table:
+For more information about mapping larger subsets for each <AppRuntimeAbbr/> layer, see the following table:
 
 <table>
 	<tr>
-		<th><%= vars.app_runtime_abbr %> Layer</th>
+		<th><AppRuntimeAbbr/> Layer</th>
 		<th>The impact of mapping larger subsets of your company</th>
 	</tr>
 	<tr>
@@ -199,6 +200,7 @@ For more information about mapping larger subsets for each <%= vars.app_runtime_
 				<li>Ability to delegate user onboarding</li>
 				<li>More likely there are people with divergent needs</li>
 				<li>BU must be platform trained and manage potentially many spaces</li>
+			</ul>
 		</td>
 	</tr>
 	<tr>
@@ -213,12 +215,12 @@ For more information about mapping larger subsets for each <%= vars.app_runtime_
 	</tr>
 </table>
 
-For more information about mapping smaller subsets for each <%= vars.app_runtime_abbr %> layer, see the following table:
+For more information about mapping smaller subsets for each <AppRuntimeAbbr/> layer, see the following table:
 
 <table>
 <thead>
 	<tr>
-		<th><%= vars.app_runtime_abbr %> Layer</th>
+		<th><AppRuntimeAbbr/> Layer</th>
 		<th>The impact of mapping smaller subsets of your company</th>
 	</tr>
 </thead>

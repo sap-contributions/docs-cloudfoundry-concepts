@@ -2,7 +2,8 @@
 title: App security groups in Cloud Foundry
 owner: Security
 ---
-
+import CodeBlock from '@theme/CodeBlock';
+import config from '@site/config';
 
 App Security Groups (ASGs) are a collection of egress rules that enable you to specify the protocols,
 ports, and IP address ranges where app or task instances send traffic.
@@ -41,28 +42,22 @@ To deactivate Dynamic ASGs: use the ops file `operations/disable-dynamic-asgs.ym
 
 ASGs can be complicated to configure correctly, especially when the specific IP addresses listed in a group change.
 
-To simplify securing a deployment while still allowing apps reach external services, operators can deploy the services into a subnet that is separate from their <%= vars.app_runtime_abbr %> deployment, then create ASGs
+To simplify securing a deployment while still allowing apps reach external services, operators can deploy the services into a subnet that is separate from their <AppRuntimeAbbr/> deployment, then create ASGs
 for the apps that allow those service subnets, while denying access to any VM hosting other apps.
 
 For examples of typical ASGs, see [Typical ASGs](#typical-groups).
 
-<% if vars.platform_code == 'CF' %>
 ### <a id='default-asg'></a> Default ASGs
 
-<%= partial "default_asg_oss" %>
-<% end %>
+import DefaultAsgOss from './_default_asg_oss.mdx';
 
-<% if vars.platform_code == "PCF" %>
-### <a id='default-asg'></a> Default ASGs
-
-<%= partial "/core/default_asg" %>
-<% end %>
+{config.platform_code === 'CF' ? (<DefaultAsgOss/>) : (<DefaultAsg/>)}
 
 ### <a id="asg-sets"></a> ASG sets
 
 ASGs are applied by configuring ASG sets differentiated by _scope_, platform-wide or space specific, and _lifecycle_, staging or running.
 
-Currently, the following ASG sets exist in <%= vars.app_runtime_abbr %>:
+Currently, the following ASG sets exist in <AppRuntimeAbbr/>:
 
 * Platform-wide staging ASG set, also called "default-staging"
 * Platform-wide running ASG set, also called "default-running"
@@ -94,23 +89,67 @@ For more information, see [Managing ASGs with the cf CLI](#procedures).
 
 ASG rules are specified as a JSON array of ASG objects. An ASG object has the following attributes:
 
-| Attribute | Description | Notes |
-| --------- | ----------- | ----- |
-| `protocol` | `tcp`, `udp`, `icmp`, or `all` | Required |
-<% if vars.platform_code == 'CF' %>
-| `destination` | A comma deliminated list of single IP addresses, IP address ranges like `192.0.2.0-192.0.2.50`, or CIDR blocks that can receive traffic | Destination lists became available in capi-release 1.180.0 and can be enabled by setting the `cc.security_groups.enable_comma_delimited_destinations` bosh property to true.  |
-<% end %>
-<% if vars.platform_code == 'PCF' %>
-| `destination` | A single IP address, an IP address range like `192.0.2.0-192.0.2.50`, or a CIDR block that can receive traffic |  |
-<% end %>
-| `ports` | A single port, multiple comma-separated ports, or a single range of ports that can receive traffic. Examples: `443`, `80,8080,8081`, `8080-8081` | Only possible if `protocol` is `tcp` or `udp`. |
-| `code` | ICMP code | Required when `protocol` is `icmp`. A value of `-1` allows all codes. |
-| `type` | ICMP | Required when `protocol` is `icmp`. A value of `-1` allows all types.
-| `log` | Set to `true` to enable logging. For more information about how to configure system logs to be sent to a syslog drain, see [Using Log Management Services](../devguide/services/log-management.html). | Logging is only supported with protocol type `tcp`. |
-| `description` | An optional field for operators managing ASG rules |  |
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Description</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>protocol</code></td>
+      <td><code>tcp</code>, <code>udp</code>, <code>icmp</code>, or <code>all</code></td>
+      <td>Required</td>
+    </tr>
+    {config.platform_code === 'CF' ? (
+      <tr>
+        <td><code>destination</code></td>
+        <td>A comma delimited list of single IP addresses, IP address ranges like <code>192.0.2.0-192.0.2.50</code>, or CIDR blocks that can receive traffic</td>
+        <td>Destination lists became available in capi-release 1.180.0 and can be enabled by setting the <code>cc.security_groups.enable_comma_delimited_destinations</code> bosh property to true.</td>
+      </tr>
+    ) : null}
+    {config.platform_code === 'PCF' ? (
+      <tr>
+        <td><code>destination</code></td>
+        <td>A single IP address, an IP address range like <code>192.0.2.0-192.0.2.50</code>, or a CIDR block that can receive traffic</td>
+        <td></td>
+      </tr>
+    ) : null}
+    <tr>
+      <td><code>ports</code></td>
+      <td>A single port, multiple comma-separated ports, or a single range of ports that can receive traffic. Examples: <code>443</code>, <code>80,8080,8081</code>, <code>8080-8081</code></td>
+      <td>Only possible if <code>protocol</code> is <code>tcp</code> or <code>udp</code>.</td>
+    </tr>
+    <tr>
+      <td><code>code</code></td>
+      <td>ICMP code</td>
+      <td>Required when <code>protocol</code> is <code>icmp</code>. A value of <code>-1</code> allows all codes.</td>
+    </tr>
+    <tr>
+      <td><code>type</code></td>
+      <td>ICMP</td>
+      <td>Required when <code>protocol</code> is <code>icmp</code>. A value of <code>-1</code> allows all types.</td>
+    </tr>
+    <tr>
+      <td><code>log</code></td>
+      <td>
+        Set to <code>true</code> to enable logging. For more information about how to configure system logs to be sent to a syslog drain, see 
+        <a href="../devguide/services/log-management.html">Using Log Management Services</a>.
+      </td>
+      <td>Logging is only supported with protocol type <code>tcp</code>.</td>
+    </tr>
+    <tr>
+      <td><code>description</code></td>
+      <td>An optional field for operators managing ASG rules</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 
-<% if vars.platform_code == "CF" || vars.platform_code == "PCF" %>
+< if vars.platform_code == "CF" || vars.platform_code == "PCF" >
 
 ## <a id="process"></a> Managing ASGs
 
@@ -145,7 +184,7 @@ To view information about existing ASGs, run the following commands:
 | `cf running-security-groups` | All ASGs applied to the platform-wide running ASG set |
 | `cf security-group ASG` | All rules in the specified ASG, where `ASG` is the name of the ASG |
 
-<%= vars.asg_note %>
+<AsgNote/>
 
 ### <a id='asg-individual'></a> Creating ASGs
 
@@ -154,8 +193,8 @@ To create an ASG:
 1. Create a rules file: a JSON-formatted single array containing objects that describe the rules. See the
 following example, which allows ICMP traffic of code `1` and type `0` to all destinations, and TCP traffic to `10.0.11.0/24` on ports `80` and `443`. For more information, see [The Structure and Attributes of ASGs](#creating-groups).
 
-    ```
-    [
+    <CodeBlock language="json">
+    {`[
       {
         "protocol": "icmp",
         "destination": "0.0.0.0/0",
@@ -164,18 +203,15 @@ following example, which allows ICMP traffic of code `1` and type `0` to all des
       },
       {
         "protocol": "tcp",
-<% if vars.platform_code == 'CF' %>
-        "destination": "10.0.11.0/24,8.8.8.8",
-<% end %>
-<% if vars.platform_code == 'PCF' %>
-        "destination": "10.0.11.0/24",
-<% end %>
+        ${config.platform_code === 'CF' ? (`"destination": "10.0.11.0/24,8.8.8.8",`) : 
+          config.platform_code === 'PCF' ? (`"destination": "10.0.11.0/24",`) : ''}
         "ports": "80,443",
         "log": true,
         "description": "Allow http and https traffic to ZoneA"
       }
     ]
-    ```
+    `}
+    </CodeBlock>
 
 1. Run:
 
@@ -191,9 +227,9 @@ following example, which allows ICMP traffic of code `1` and type `0` to all des
 
     In the following example, `EXAMPLE-ASG` is the name of an ASG, and `~/workspace/example-asg.json` is the path to a rules file:
 
-    <pre class="terminal">
+    ```
     cf create-security-group EXAMPLE-ASG ~/workspace/example-asg.json
-    </pre>
+    ```
 
 After the ASG is created, you must bind it to an ASG set before it takes effect. For more information, see [Bind ASGs](#binding-groups).
 
@@ -357,7 +393,7 @@ The following table describes examples of typical ASGs. Configure your ASGs in a
 | `dns` | DNS, either public or private |
 | `public-networks` | Public networks, excluding IaaS metadata endpoints |
 | `private-networks` | Private networks in accordance with [RFC-1918](https://tools.ietf.org/html/rfc1918#section-3) |
-| `load-balancers` | The internal <%= vars.app_runtime_abbr %> load balancer and others |
+| `load-balancers` | The internal <AppRuntimeAbbr/> load balancer and others |
 | `internal-proxies` | Internal proxies |
 | `internal-databases` | Internal databases |
 
@@ -367,7 +403,7 @@ To resolve hostnames to IP addresses, apps require DNS server connectivity, whic
 
 The following is an example `dns` ASG:
 
-```
+```json
 [
   {
     "protocol": "tcp",
@@ -391,7 +427,7 @@ metadata endpoint can expose sensitive environment information to untrusted apps
 
 The following is an example `public_networks` ASG:
 
-```
+```json
 [
   {
     "destination": "0.0.0.0-9.255.255.255",
@@ -424,7 +460,7 @@ Network connections that are commonly allowable in private networks include endp
 
 The following is an example `private_networks` ASG:
 
-```
+```json
 [
   {
     "protocol": "tcp",
@@ -471,4 +507,4 @@ To download the latest release of the ASG Creator, see the [Cloud Foundry Incuba
 
 For information about how you can use ASGs to correlate emitted logs back to an app, see [How to use Application Security Group (ASG) logging](https://community.pivotal.io/s/article/How-to-use-Application-Security-Group-ASG-Logging) in the Tanzu Support Hub.
 
-<% end %>
+< end >

@@ -1,0 +1,38 @@
+---
+title: Cloud Foundry concepts
+---
+
+import config from '@site/config';
+
+<ConditionalContent 
+    configKey="platform_code"
+    valuesMap={{
+        CF: (
+        <>
+            <AppRuntimeFirst/> is an open-source cloud app platform, providing a choice of clouds, developer frameworks, and app services. Cloud Foundry makes it faster and easier to build, test, deploy, and scale apps. It is an open-source project and is available through a variety of private cloud distributions and public cloud instances. For more information, see <a href='https://github.com/cloudfoundry'>Cloud Foundry</a> on GitHub.
+        </>
+        ),
+        else: (
+        <>
+            <AppRuntimeFirst/> is based on Cloud Foundry, which is an open-source cloud app platform, providing a choice of clouds, developer frameworks, and app services. <AppRuntimeAbbr/> makes it faster and easier to build, test, deploy, and scale apps. It is an open-source project and is available through a variety of private cloud distributions and public cloud instances. For more information, see <a href='https://github.com/cloudfoundry'>Cloud Foundry</a> on GitHub.
+        </>
+        )
+    }}
+/>
+
+This documentation presents an overview of
+how <AppRuntimeAbbr/> works and a discussion of key concepts.
+
+To learn more about <AppRuntimeAbbr/> fundamentals, see the following topics:
+
+<ul>
+    <li>[<AppRuntimeAbbr/> Overview](cloudfoundry-concepts/overview.mdx)</li>
+
+    <li>[Security and Networking](cloudfoundry-concepts/security-and-networking/index.mdx)</li>
+
+    <li>[High Availability](ha-index.html)</li>
+
+    <li>[How <AppRuntimeAbbr/> Manages Apps](apps-index.html)</li>
+
+    {config.platform_code === 'CF' ? (<><li><a href="architecture/index.html">Runtime Components</a></li></>) : (<li><a href="architecture/index.html"><AppRuntimeAbbr/> Components</a></li>)}
+</ul>

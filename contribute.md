@@ -3,25 +3,25 @@ title: Contribute to Cloud Foundry documentation
 owner: Docs
 ---
 
-You can contribute to <%= vars.platform_name %> documentation.
+You can contribute to <PlatformName/> documentation.
 
-The <%= vars.platform_name %> documentation relies on contributions from the community to remain accurate, complete, and consumable.
+The <PlatformName/> documentation relies on contributions from the community to remain accurate, complete, and consumable.
 
-Reasons to contribute to the <%= vars.platform_name %> documentation are:
+Reasons to contribute to the <PlatformName/> documentation are:
 
 * You noticed that a topic is incorrect or incomplete.
-* You are developing a new <%= vars.platform_name %> feature and want to tell users know how to use it.
+* You are developing a new <PlatformName/> feature and want to tell users know how to use it.
 * You want to help your fellow humans.
 * You do not like the idea of someone else having to go through what you just went through to figure something out. Such a waste; so inefficient.
 
 
 ## <a id='contribute'></a> How can you contribute?
 
-The source files for all <%= vars.platform_name %> documentation are hosted on [GitHub](http://github.com), and each documentation page has a link to its GitHub source file at the bottom. The source files are in Markdown/HTML/embedded Ruby (`html.md.erb`) format.
+The source files for all <PlatformName/> documentation are hosted on [GitHub](http://github.com), and each documentation page has a link to its GitHub source file at the bottom. The source files are in Markdown/HTML/embedded Ruby (`html.md.erb`) format.
 
 If you use GitHub, the most direct and effective way to contribute to the documentation is to submit a pull request (PR) or raise an issue in the GitHub repository containing the documentation that you want to change. For more information, see [Submit a GitHub Pull Request](#github-pr) and [Raise a GitHub Issue](#github-issue).
 
-If you do not already use GitHub, you can contribute to the <%= vars.platform_name %> documentation in other ways. For more information, see [Contribute Without GitHub](#non-github).
+If you do not already use GitHub, you can contribute to the <PlatformName/> documentation in other ways. For more information, see [Contribute Without GitHub](#non-github).
 
 Whichever way you contribute, please follow the guidelines in [Advice for Contributors](#advice).
 
@@ -29,7 +29,7 @@ Whichever way you contribute, please follow the guidelines in [Advice for Contri
 
 If you have identified a problem with the documentation and know the required content change, the fastest way to make the change is by submitting a PR.
 
-The <%= vars.platform_name %> documentation team typically accepts PRs within a day, but might need to ask follow up questions.
+The <PlatformName/> documentation team typically accepts PRs within a day, but might need to ask follow up questions.
 
 Before your PRs can be accepted, you must have a signed Contributor License Agreement (CLA) on file. If you do not, you are prompted to sign a CLA once you have opened your first PR.
 
@@ -51,7 +51,7 @@ To submit a pull request:
 
 If you do not have specific edits to make, but want start a discussion or make a general suggestion, you can raise a GitHub issue.
 
-GitHub issues take longer to resolve than pull requests. But, if you describe the issue with helpful background information, and have specific and actionable instructions, the <%= vars.platform_name %> documentation team can quickly address it.
+GitHub issues take longer to resolve than pull requests. But, if you describe the issue with helpful background information, and have specific and actionable instructions, the <PlatformName/> documentation team can quickly address it.
 
 Vague or partially-baked GitHub issues might remain unaddressed for some time.
 
@@ -75,16 +75,16 @@ To raise an issue on a GitHub repository:
 
 ### <a id='non-github'></a> Contributing without GitHub
 
-To contribute to the <%= vars.platform_name %> docs without using GitHub, you can use one of these methods:
+To contribute to the <PlatformName/> docs without using GitHub, you can use one of these methods:
 
 * **Send Feedback** link (TAS for VMs) or **Create a pull request or raise an issue on the source for this page in GitHub** (Cloud Foundry) on any page of the documentation.
 
-* **Slack** the <%= vars.platform_name %> docs team through the [&#35;cf-docs](https://cloudfoundry.slack.com/messages/C03B0T0D5/") channel in <%= vars.platform_name %> Slack.
+* **Slack** the <PlatformName/> docs team through the [&#35;cf-docs](https://cloudfoundry.slack.com/messages/C03B0T0D5/") channel in <PlatformName/> Slack.
 
 
 ## <a id='advice'></a> Contributor advice
 
-The <%= vars.platform_name %> documentation team reviews and revises all contributions, so you can **focus on providing correct and complete information, and not worry about style and structure**.
+The <PlatformName/> documentation team reviews and revises all contributions, so you can **focus on providing correct and complete information, and not worry about style and structure**.
 
 Keep in mind:
 
@@ -96,14 +96,14 @@ Keep in mind:
 
 * If you are giving instructions, include why you would want to do what you are describing. What is your specific situation, and what result do you seek?
 
-For further guidance, contact the <%= vars.platform_name %> documentation team on our `#cf-docs` channel on the [<%= vars.platform_name %> Slack](https://cloudfoundry.slack.com).
+For further guidance, contact the <PlatformName/> documentation team on our `#cf-docs` channel on the [<PlatformName/> Slack](https://cloudfoundry.slack.com).
 
 
 ## <a id='preview'></a> Previewing documentation changes
 
-The <%= vars.platform_name %> documentation team uses the tool [Bookbinder](https://github.com/pivotal-cf/bookbinder) to publish the <%= vars.platform_name %> documentation.
+The <PlatformName/> documentation team uses the tool [Bookbinder](https://github.com/pivotal-cf/bookbinder) to publish the <PlatformName/> documentation.
 
-The following instructions explain how to use Bookbinder to preview your documentation changes locally. But you do not have to install or use Bookbinder in order to contribute to the <%= vars.platform_name %> documentation.
+The following instructions explain how to use Bookbinder to preview your documentation changes locally. But you do not have to install or use Bookbinder in order to contribute to the <PlatformName/> documentation.
 
 To preview documentation changes with Bookbinder:
 
@@ -121,13 +121,13 @@ To preview documentation changes with Bookbinder:
  	git clone git@=github.com:cloudfoundry/docs-cloudfoundry-concepts.git
  	```
 
-1. Return to your workspace directory and clone the <%= vars.platform_name %> book by running:
+1. Return to your workspace directory and clone the <PlatformName/> book by running:
 
 	```
 	git clone git@=github.com:cloudfoundry/docs-book-cloudfoundry.git
 	```
 
-1. Change directory into the <%= vars.platform_name %> book by running:
+1. Change directory into the <PlatformName/> book by running:
 
 	```
 	cd docs-book-cloudfoundry
@@ -146,5 +146,6 @@ To preview documentation changes with Bookbinder:
 	```
 
 1. Start a browser and go to `http://localhost:4567` to where your docs are published. For instance, `http://localhost:4567/cf-cli/install-go-cli.html`.
-	<br><br>
+	
+	
 	Bookbinder automatically updates the live version of the documentation whenever you make a change to the content repository.
